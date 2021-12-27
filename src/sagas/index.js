@@ -23,14 +23,14 @@ import { searchSkills } from '../api/index';
 
 // workers
 function filterChangeSearchAction({ type, payload }) {
-  return type === CHANGE_SEARCH_FIELD && payload.search.trim() !== ''
+  return type === CHANGE_SEARCH_FIELD 
 }
 
 function* handleChangeSearchSaga(action) {
+  // console.log(action.payload.search);
   if (action.payload.search === '') {
     yield put(clearSkillsItems());
-  }
-  yield put(searchSkillsRequest(action.payload.search));
+  } else yield put(searchSkillsRequest(action.payload.search));
 }
 
 function* handleSearchSkillsSaga(action) {
